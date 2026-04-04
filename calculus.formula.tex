@@ -119,7 +119,7 @@
 \begin{aligned}
 \sin\alpha\cos\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)+\sin(\alpha-\beta)\bigr] \\
 \cos\alpha\sin\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)-\sin(\alpha-\beta)\bigr] \\
-\cos\alpha\cos\beta &= \frac{1}{2}\bigl[\cos(\alpha-\beta)+\cos(\alpha+\beta)\bigr] \\
+\cos\alpha\cos\beta &= \frac{1}{2}\bigl[\cos(\alpha+\beta)+\cos(\alpha-\beta)\bigr] \\
 \sin\alpha\sin\beta &= - \frac{1}{2}\bigl[\cos(\alpha+\beta) - \cos(\alpha-\beta)\bigr] \\
 \end{aligned}
 \]
@@ -160,7 +160,9 @@
 \csch x &= \frac{1}{\sinh x} \\
 \cosh^2 x-\sinh^2 x &= 1 \\
 1-\tanh^2 x &= \sech^2 x \\
-\coth^2 x-1 &= \csch^2 x
+\coth^2 x-1 &= \csch^2 x \\
+\operatorname{arsinh}x &= \ln\left(x + \sqrt{1 + x^2}\right)\\
+\operatorname{arcosh}x &= \ln\left(x \pm \sqrt{x^2 -1}\right)
 \end{aligned}
 \]
 
@@ -205,9 +207,9 @@
 \frac{d}{dx}\!\left(\frac{1}{x}\right) &= -\frac{1}{x^2} \\
 \frac{d}{dx}\sqrt{x} &= \frac{1}{2\sqrt{x}} \\
 \frac{d}{dx}(e^x) &= e^x &
-\frac{d}{dx}(c^x) &= c^x\ln c \\
+\frac{d}{dx}(a^x) &= a^x\ln a \\
 \frac{d}{dx}\ln|x| &= \frac{1}{x} &
-\frac{d}{dx}\log_c|x| &= \frac{1}{x \ln c}
+\frac{d}{dx}\log_a|x| &= \frac{1}{x \ln a}
 \end{aligned}
 \]
 
@@ -218,8 +220,8 @@
 \frac{d}{dx}(\cos x) &= -\sin x \\
 \frac{d}{dx}(\tan x) &= \sec^2 x &
 \frac{d}{dx}(\cot x) &= -\csc^2 x \\
-\frac{d}{dx}(\sec x) &= \sec u\tan x &
-\frac{d}{dx}(\csc x) &= -\csc u\cot x
+\frac{d}{dx}(\sec x) &= \sec x\tan x &
+\frac{d}{dx}(\csc x) &= -\csc x\cot x
 \end{aligned}
 \]
 
@@ -242,7 +244,7 @@
 \qquad (n\neq -1) \\
 \int \frac{1}{x}\,\dx &= \ln|x| + C \\
 \int e^x \dx &= e^u + C \\
-\int c^x \dx &= \frac{c^x}{\ln c} + C \\
+\int a^x \dx &= \frac{a^x}{\ln a} + C \\
 \int \ln|x| \dx &= \bigl(x\ln|x|-x\bigr) + C
 \end{aligned}
 \]
