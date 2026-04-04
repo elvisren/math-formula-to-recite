@@ -1,0 +1,316 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,array}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext}
+\let\Bbbk\relax
+\usepackage[
+  subscriptcorrection,
+  slantedGreek,
+  nofontinfo,
+  mtpcal,
+  mtpfrak,
+  mtphrb,
+  zswash
+]{mtpro2}
+\usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+
+\pagestyle{empty}
+\allowdisplaybreaks
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccsc}{arccsc}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+\setlength{\jot}{2pt}
+\renewcommand{\arraystretch}{1.18}
+
+\newcommand{\sheetsec}[1]{%
+  \vspace{4pt}%
+  \colorbox{black!8}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\textbf{#1}}}%
+  \vspace{2pt}%
+}
+\newcommand{\subsec}[1]{\textbf{#1}\par}
+\newcommand{\dx}{\,dx}
+
+
+\begin{document}
+
+\sheetsec{1. Trigonometric formulas}
+
+\subsec{Basic definitions and identities}
+\[
+\begin{aligned}
+\tan x &= \frac{\sin x}{\cos x}&
+\cot x &= \frac{\cos x}{\sin x}\\
+\sec x &= \frac{1}{\cos x}&
+\csc x &= \frac{1}{\sin x}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sin^2 x + \cos^2 x &= 1\\
+1 + \tan^2 x &= \sec^2 x\\
+1 + \cot^2 x &= \csc^2 x
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sin\!\left(\frac{\pi}{2}-x\right) &= \cos x&
+\cos\!\left(\frac{\pi}{2}-x\right) &= \sin x\\
+\tan\!\left(\frac{\pi}{2}-x\right) &= \cot x
+\end{aligned}
+\]
+
+\subsec{Parity, periodicity, sum and difference}
+\[
+\begin{aligned}
+\sin(-x) &= -\sin x&
+\cos(-x) &= \cos x&
+\tan(-x) &= -\tan x
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sin(x+2\pi) &= \sin x&
+\cos(x+2\pi) &= \cos x&
+\tan(x+\pi) &= \tan x
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sin(\alpha\pm\beta) &= \sin\alpha\cos\beta \pm \cos\alpha\sin\beta\\
+\cos(\alpha\pm\beta) &= \cos\alpha\cos\beta \mp \sin\alpha\sin\beta\\
+\tan(\alpha\pm\beta) &= \frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}
+\end{aligned}
+\]
+
+\subsec{Double-angle, triple-angle, half-angle}
+\[
+\begin{aligned}
+\sin 2x &= 2\sin x\cos x \\
+\cos 2x &= \cos^2 x-\sin^2 x = 2\cos^2 x-1 = 1-2\sin^2 x \\
+\tan 2x &= \frac{2\tan x}{1-\tan^2 x} \\
+\sin 3x &= 3\sin x - 4\sin^3 x \\
+\cos 3x &= 4\cos^3 x - 3\cos x
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+\sin^2\!\frac{x}{2} &= \frac{1-\cos x}{2} &
+\cos^2\!\frac{x}{2} &= \frac{1+\cos x}{2} \\
+\tan\frac{x}{2} &= \frac{\sin x}{1+\cos x}
+= \frac{1-\cos x}{\sin x}
+\end{aligned}
+\]
+
+\subsec{Product-to-sum}
+\[
+\begin{aligned}
+\sin\alpha\cos\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)+\sin(\alpha-\beta)\bigr] \\
+\cos\alpha\sin\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)-\sin(\alpha-\beta)\bigr] \\
+\cos\alpha\cos\beta &= \frac{1}{2}\bigl[\cos(\alpha-\beta)+\cos(\alpha+\beta)\bigr] \\
+\sin\alpha\sin\beta &= - \frac{1}{2}\bigl[\cos(\alpha+\beta) - \cos(\alpha-\beta)\bigr] \\
+\end{aligned}
+\]
+
+\subsec{Sum-to-product}
+\[
+\begin{aligned}
+\sin\alpha+\sin\beta &= 2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
+\sin\alpha-\sin\beta &= 2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} \\
+\cos\alpha+\cos\beta &= 2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
+\cos\alpha-\cos\beta &= -2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}
+\end{aligned}
+\]
+
+\subsec{Special-angle table}
+\[
+\begin{array}{>{\displaystyle}c|>{\displaystyle}c>{\displaystyle}c>{\displaystyle}c>{\displaystyle}c>{\displaystyle}c}
+\text{Angle} & 18^\circ & \dfrac{\pi}{6} & \dfrac{\pi}{4} & \dfrac{\pi}{3} & \dfrac{\pi}{2} \\ \hline
+\sin\theta & \dfrac{\sqrt5-1}{4} & \dfrac12 & \dfrac{\sqrt2}{2} & \dfrac{\sqrt3}{2} & 1 \\
+\cos\theta & \dfrac{\sqrt{10+2\sqrt5}}{4} & \dfrac{\sqrt3}{2} & \dfrac{\sqrt2}{2} & \dfrac12 & 0 \\
+\tan\theta & \dfrac{1}{\sqrt{5+2\sqrt5}} & \dfrac{\sqrt3}{3} & 1 & \sqrt3 & \text{undef} \\
+\cot\theta & \sqrt{5+2\sqrt5} & \sqrt3 & 1 & \dfrac{\sqrt3}{3} & 0 \\
+\sec\theta & \dfrac{4}{\sqrt{10+2\sqrt5}} & \dfrac{2\sqrt3}{3} & \sqrt2 & 2 & \text{undef} \\
+\csc\theta & \sqrt5+1 & 2 & \sqrt2 & \dfrac{2\sqrt3}{3} & 1
+\end{array}
+\]
+
+\sheetsec{2. Hyperbolic functions}
+
+\subsec{Definitions and identities}
+\[
+\begin{aligned}
+\sinh x &= \frac{e^x-e^{-x}}{2} &
+\cosh x &= \frac{e^x+e^{-x}}{2} \\
+\tanh x &= \frac{\sinh x}{\cosh x} &
+\coth x &= \frac{\cosh x}{\sinh x} \\
+\sech x &= \frac{1}{\cosh x} &
+\csch x &= \frac{1}{\sinh x} \\
+\cosh^2 x-\sinh^2 x &= 1 \\
+1-\tanh^2 x &= \sech^2 x \\
+\coth^2 x-1 &= \csch^2 x
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+\sinh(-x) &= -\sinh x&
+\cosh(-x) &= \cosh x&
+\tanh(-x) &= -\tanh x
+\end{aligned}
+\]
+
+\subsec{Addition, double-angle, half-angle}
+\[
+\begin{aligned}
+\sinh(\alpha\pm\beta) &= \sinh\alpha\cosh\beta \pm \cosh\alpha\sinh\beta\\
+\cosh(\alpha\pm\beta) &= \cosh\alpha\cosh\beta \pm \sinh\alpha\sinh\beta\\
+\tanh(\alpha\pm\beta) &= \frac{\tanh\alpha\pm\tanh\beta}{1\pm\tanh\alpha\tanh\beta}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sinh 2x &= 2\sinh x\cosh x\\
+\cosh 2x &= \cosh^2 x+\sinh^2 x = 2\cosh^2 x-1 = 1+2\sinh^2 x\\
+\tanh 2x &= \frac{2\tanh x}{1+\tanh^2 x}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sinh^2\!\frac{x}{2} &= \frac{\cosh x-1}{2}&
+\cosh^2\!\frac{x}{2} &= \frac{\cosh x+1}{2}\\
+\tanh\frac{x}{2} &= \frac{\sinh x}{\cosh x+1}
+= \frac{\cosh x-1}{\sinh x}
+\end{aligned}
+\]
+
+\sheetsec{3. Common differentiation formulas}
+
+\subsec{For \(u=ax+b\)}
+\[
+\begin{aligned}
+\frac{d}{dx}(x^n) &= n\,x^{\,n-1} &
+\frac{d}{dx}\!\left(\frac{1}{x}\right) &= -\frac{1}{x^2} \\
+\frac{d}{dx}\sqrt{x} &= \frac{1}{2\sqrt{x}} \\
+\frac{d}{dx}(e^x) &= e^x &
+\frac{d}{dx}(c^x) &= c^x\ln c \\
+\frac{d}{dx}\ln|x| &= \frac{1}{x} &
+\frac{d}{dx}\log_c|x| &= \frac{1}{x \ln c}
+\end{aligned}
+\]
+
+\subsec{Trigonometric}
+\[
+\begin{aligned}
+\frac{d}{dx}(\sin x) &= \cos x &
+\frac{d}{dx}(\cos x) &= -\sin x \\
+\frac{d}{dx}(\tan x) &= \sec^2 x &
+\frac{d}{dx}(\cot x) &= -\csc^2 x \\
+\frac{d}{dx}(\sec x) &= \sec u\tan x &
+\frac{d}{dx}(\csc x) &= -\csc u\cot x
+\end{aligned}
+\]
+
+\subsec{Inverse trigonometric}
+\[
+\begin{aligned}
+\frac{d}{dx}\arcsin x &= \frac{1}{\sqrt{1-x^2}} &
+\frac{d}{dx}\arccos x &= -\frac{1}{\sqrt{1-x^2}} \\
+\frac{d}{dx}\arctan x &= \frac{1}{1+x^2} &
+\frac{d}{dx}\arccot x &= -\frac{1}{1+x^2}
+\end{aligned}
+\]
+
+\sheetsec{4. Common integration formulas}
+
+\subsec{For \(u=ax+b\)}
+\[
+\begin{aligned}
+\int x^n \dx &= \frac{u^{n+1}}{n+1} + C
+\qquad (n\neq -1) \\
+\int \frac{1}{x}\,\dx &= \ln|x| + C \\
+\int e^x \dx &= e^u + C \\
+\int c^x \dx &= \frac{c^x}{\ln c} + C \\
+\int \ln|x| \dx &= \bigl(x\ln|x|-x\bigr) + C
+\end{aligned}
+\]
+
+\subsec{Trigonometric}
+\[
+\begin{aligned}
+\int \sin x \dx &= -\cos x + C &
+\int \cos x \dx &= \sin x + C \\
+\int \sec^2 x \dx &= \tan x + C &
+\int \csc^2 x \dx &= -\cot x + C \\
+\int \sec x\tan x \dx &= \sec x + C &
+\int \csc x\cot x \dx &= -\csc x + C
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\int \tan x \dx &= -\ln|\cos x| + C
+= \ln|\sec x| + C \\
+\int \cot x \dx &= \ln|\sin x| + C \\
+\int \sec x \dx &= \ln|\sec x+\tan x| + C \\
+\int \csc x \dx &= -\ln|\csc x+\cot x| + C
+\end{aligned}
+\]
+
+\subsec{Standard inverse-trig and logarithmic forms}
+
+\[
+\begin{aligned}
+\int \frac{1}{x^2+a^2}\,\dx &= \frac{1}{a}\arctan\frac{x}{a} + C\\
+\int \frac{1}{a^2-x^2}\,\dx &= \frac{1}{2a}\ln\left|\frac{a+x}{a-x}\right| + C\\
+\int \frac{1}{x^2-a^2}\,\dx &= \frac{1}{2a}\ln\left|\frac{x-a}{x+a}\right| + C \\
+\int \frac{1}{\sqrt{a^2-x^2}}\,\dx &= \arcsin\frac{x}{a} + C\\
+\int \frac{1}{\sqrt{x^2+a^2}}\,\dx &= \ln\bigl|x+\sqrt{x^2+a^2}\bigr| + C\\
+\int \frac{1}{\sqrt{x^2-a^2}}\,\dx &= \ln\bigl|x+\sqrt{x^2-a^2}\bigr| + C\\
+\int \frac{x}{x^2-a^2}\,\dx &= \frac{1}{2}\ln|x^2-a^2| + C\\
+\end{aligned}
+\]
+
+\sheetsec{5. Taylor expansions}
+
+\subsec{General forms}
+\[
+\begin{aligned}
+f(x) &= \sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^n\\
+f(x) &= \sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^n
+\end{aligned}
+\]
+
+\subsec{Common Maclaurin series}
+\[
+\begin{aligned}
+e^x &= 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
+\sin x &= x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\\
+\cos x &= 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\\
+\sinh x &= x+\frac{x^3}{3!}+\frac{x^5}{5!}+\cdots\\
+\cosh x &= 1+\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\\
+\frac{1}{1-x} &= 1+x+x^2+x^3+\cdots \qquad (|x|<1)\\
+\frac{1}{1+x} &= 1-x+x^2-x^3+\cdots \qquad (|x|<1)\\
+\ln(1+x) &= x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots
+\qquad (-1<x\le 1)\\
+\arctan x &= x-\frac{x^3}{3}+\frac{x^5}{5}-\cdots
+\qquad (|x|\le 1)\\
+(1+x)^\alpha
+&= 1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2
++\frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3+\cdots
+\qquad (|x|<1)
+\end{aligned}
+\]
+
+\end{document}
