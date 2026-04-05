@@ -97,42 +97,31 @@
 \subsec{Double-angle, triple-angle, half-angle}
 \[
 \begin{aligned}
-\sin 2x &= 2\sin x\cos x \\
-\cos 2x &= \cos^2 x-\sin^2 x = 2\cos^2 x-1 = 1-2\sin^2 x \\
+\sin 2x &= 2\sin x\cos x &
+\cos 2x &= \cos^2 x-\sin^2 x \\
+&& &= 2\cos^2 x-1 = 1-2\sin^2 x \\
 \tan 2x &= \frac{2\tan x}{1-\tan^2 x} \\
-\sin 3x &= 3\sin x - 4\sin^3 x \\
-\cos 3x &= 4\cos^3 x - 3\cos x
-\end{aligned}
-\]
-
-\[
-\begin{aligned}
+\sin 3x &= 3\sin x - 4\sin^3 x &
+\cos 3x &= 4\cos^3 x - 3\cos x \\
 \sin^2\!\frac{x}{2} &= \frac{1-\cos x}{2} &
 \cos^2\!\frac{x}{2} &= \frac{1+\cos x}{2} \\
+\sin x &= \frac{2\tan \frac{x}{2}}{1 + \tan^2 \frac{x}{2}} &
+\cos x &= \frac{1 - \tan^2 \frac{x}{2}}{1 + \tan^2 \frac{x}{2}}\\
 \tan\frac{x}{2} &= \frac{\sin x}{1+\cos x}
 = \frac{1-\cos x}{\sin x}
 \end{aligned}
 \]
 
-\subsec{Product-to-sum}
+\subsec{Product-to-sum and Sum-to-product}
 \[
 \begin{aligned}
-\sin\alpha\cos\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)+\sin(\alpha-\beta)\bigr] \\
-\cos\alpha\sin\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)-\sin(\alpha-\beta)\bigr] \\
-\cos\alpha\cos\beta &= \frac{1}{2}\bigl[\cos(\alpha+\beta)+\cos(\alpha-\beta)\bigr] \\
-\sin\alpha\sin\beta &= - \frac{1}{2}\bigl[\cos(\alpha+\beta) - \cos(\alpha-\beta)\bigr] \\
+\sin\alpha\cos\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)+\sin(\alpha-\beta)\bigr] & sin\alpha+\sin\beta &= 2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
+\cos\alpha\sin\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)-\sin(\alpha-\beta)\bigr] & \sin\alpha-\sin\beta &= 2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} \\
+\cos\alpha\cos\beta &= \frac{1}{2}\bigl[\cos(\alpha+\beta)+\cos(\alpha-\beta)\bigr] & \cos\alpha+\cos\beta &= 2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
+\sin\alpha\sin\beta &= - \frac{1}{2}\bigl[\cos(\alpha+\beta) - \cos(\alpha-\beta)\bigr] & \cos\alpha-\cos\beta &= -2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}
 \end{aligned}
 \]
 
-\subsec{Sum-to-product}
-\[
-\begin{aligned}
-\sin\alpha+\sin\beta &= 2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
-\sin\alpha-\sin\beta &= 2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} \\
-\cos\alpha+\cos\beta &= 2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
-\cos\alpha-\cos\beta &= -2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}
-\end{aligned}
-\]
 
 \subsec{Special-angle table}
 \[
@@ -203,8 +192,8 @@
 \subsec{For \(u=ax+b\)}
 \[
 \begin{aligned}
-\frac{d}{dx}(x^n) &= n\,x^{\,n-1} &
-\frac{d}{dx}\!\left(\frac{1}{x}\right) &= -\frac{1}{x^2} \\
+\frac{d}{dx}(x^n) &= n\,x^{\,n-1}\\
+\frac{d}{dx}\!\left(\frac{1}{x}\right) &= -\frac{1}{x^2} &
 \frac{d}{dx}\sqrt{x} &= \frac{1}{2\sqrt{x}} \\
 \frac{d}{dx}(e^x) &= e^x &
 \frac{d}{dx}(a^x) &= a^x\ln a \\
@@ -240,10 +229,10 @@
 \subsec{For \(u=ax+b\)}
 \[
 \begin{aligned}
-\int x^n \dx &= \frac{u^{n+1}}{n+1} + C
+\int x^n \dx &= \frac{x^{n+1}}{n+1} + C
 \qquad (n\neq -1) \\
 \int \frac{1}{x}\,\dx &= \ln|x| + C \\
-\int e^x \dx &= e^u + C \\
+\int e^x \dx &= e^x + C \\
 \int a^x \dx &= \frac{a^x}{\ln a} + C \\
 \int \ln|x| \dx &= \bigl(x\ln|x|-x\bigr) + C
 \end{aligned}
@@ -262,8 +251,7 @@
 \]
 \[
 \begin{aligned}
-\int \tan x \dx &= -\ln|\cos x| + C
-= \ln|\sec x| + C \\
+\int \tan x \dx &= -\ln|\cos x| + C\\
 \int \cot x \dx &= \ln|\sin x| + C \\
 \int \sec x \dx &= \ln|\sec x+\tan x| + C \\
 \int \csc x \dx &= -\ln|\csc x+\cot x| + C
@@ -280,7 +268,6 @@
 \int \frac{1}{\sqrt{a^2-x^2}}\,\dx &= \arcsin\frac{x}{a} + C\\
 \int \frac{1}{\sqrt{x^2+a^2}}\,\dx &= \ln\bigl|x+\sqrt{x^2+a^2}\bigr| + C\\
 \int \frac{1}{\sqrt{x^2-a^2}}\,\dx &= \ln\bigl|x+\sqrt{x^2-a^2}\bigr| + C\\
-\int \frac{x}{x^2-a^2}\,\dx &= \frac{1}{2}\ln|x^2-a^2| + C\\
 \end{aligned}
 \]
 
@@ -288,10 +275,7 @@
 
 \subsec{General forms}
 \[
-\begin{aligned}
-f(x) &= \sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^n\\
-f(x) &= \sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^n
-\end{aligned}
+f(x) = \sum_{i=0}^{n}\frac{f^{(i)}(a)}{i!}(x-a)^i + \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1} \qquad(\xi \text{ is between } x \text { and } a)
 \]
 
 \subsec{Common Maclaurin series}
@@ -304,10 +288,9 @@ e^x &= 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 \cosh x &= 1+\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\\
 \frac{1}{1-x} &= 1+x+x^2+x^3+\cdots \qquad (|x|<1)\\
 \frac{1}{1+x} &= 1-x+x^2-x^3+\cdots \qquad (|x|<1)\\
-\ln(1+x) &= x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots
-\qquad (-1<x\le 1)\\
-\arctan x &= x-\frac{x^3}{3}+\frac{x^5}{5}-\cdots
-\qquad (|x|\le 1)\\
+\ln(1+x) &= x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots \qquad (-1<x\le 1)\\
+\arctan x &= x-\frac{x^3}{3}+\frac{x^5}{5}-\cdots \qquad (|x| < 1)\\
+\operatorname{arctanh} x &= x+\frac{x^3}{3}+\frac{x^5}{5}+\cdots \qquad (|x| < 1)\\
 (1+x)^\alpha
 &= 1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2
 +\frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3+\cdots
