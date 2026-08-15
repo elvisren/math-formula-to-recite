@@ -1,6 +1,8 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[margin=1.2cm]{geometry}
-\usepackage{amsmath,amssymb,mathtools,array}
+\usepackage[top=1.05cm,bottom=1.20cm,left=1.15cm,right=1.15cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,array,graphicx}
+\usepackage{multicol}
+\usepackage{needspace}
 \usepackage[T1]{fontenc}
 \usepackage{newtxtext}
 \let\Bbbk\relax
@@ -15,287 +17,561 @@
 ]{mtpro2}
 \usepackage{microtype}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{fancyhdr}
 
-\pagestyle{empty}
-\allowdisplaybreaks
+
+
+\definecolor{DeepBlue}{HTML}{203F55}
+\definecolor{Teal}{HTML}{19718A}
+\definecolor{Difference}{HTML}{C5522C}
+\definecolor{PaleBlue}{HTML}{EAF3F7}
+\definecolor{PaleOrange}{HTML}{FFF1EA}
+\definecolor{RuleBlue}{HTML}{BFD7E1}
+\definecolor{FormulaInk}{HTML}{18252D}
+\definecolor{MutedInk}{HTML}{5D6D76}
 
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\csch}{csch}
 \DeclareMathOperator{\arccot}{arccot}
 \DeclareMathOperator{\arcsec}{arcsec}
 \DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arcoth}{arcoth}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arccsch}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{4pt}
-\setlength{\abovedisplayskip}{5pt}
-\setlength{\belowdisplayskip}{5pt}
-\setlength{\abovedisplayshortskip}{3pt}
-\setlength{\belowdisplayshortskip}{3pt}
-\setlength{\jot}{2pt}
-\renewcommand{\arraystretch}{1.18}
+\setlength{\parskip}{2pt}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{2pt}
+\setlength{\belowdisplayshortskip}{2pt}
+\setlength{\jot}{2.5pt}
+\setlength{\columnsep}{0.70cm}
+\setlength{\columnseprule}{0.35pt}
+\def\columnseprulecolor{\color{RuleBlue}}
+\renewcommand{\arraystretch}{1.15}
+\allowdisplaybreaks
 
-\newcommand{\sheetsec}[1]{%
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\color{MutedInk}\scriptsize Calculus formula recitation sheet \enspace\textbullet\enspace \thepage}
+
+\newcommand{\dx}{\,dx}
+\newcommand{\ddx}{\frac{d}{dx}}
+\newcommand{\diff}[1]{\textcolor{Difference}{#1}}
+\newcommand{\where}[1]{\quad\textcolor{MutedInk}{\scriptstyle #1}}
+\newcommand{\notdefined}{\textcolor{Difference}{\mathrm{undef}}}
+
+\newcommand{\sheettitle}[1]{%
+  \begin{center}
+    {\color{DeepBlue}\LARGE\bfseries #1}\par
+    \vspace{2pt}
+    {\color{MutedInk}\small A compact comparison-first sheet for recognition and recall}
+  \end{center}
+  \vspace{2pt}
+}
+\newcommand{\sectionbar}[1]{%
+  \needspace{3\baselineskip}
   \vspace{4pt}%
-  \colorbox{black!8}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\textbf{#1}}}%
+  \colorbox{DeepBlue}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \color{white}\bfseries #1}}%
+  \vspace{3pt}%
+}
+\newcommand{\subbar}[1]{%
+  \needspace{3\baselineskip}
+  \vspace{3pt}%
+  {\color{Teal}\bfseries #1}\par
+  \vspace{-1pt}{\color{RuleBlue}\rule{\linewidth}{0.45pt}}\vspace{-3pt}%
+}
+\newcommand{\pairhead}[1]{%
+  \colorbox{PaleBlue}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\color{DeepBlue}\bfseries\small #1}}%
+  \vspace{1pt}%
+}
+\newcommand{\compareblock}[3]{%
+  \subbar{#1}
+  \noindent
+  \begin{minipage}[t]{0.485\linewidth}
+    \vspace{0pt}\pairhead{Circular trigonometric}
+    #2
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.485\linewidth}
+    \vspace{0pt}\pairhead{Hyperbolic}
+    #3
+  \end{minipage}
+  \par\vspace{2pt}%
+}
+\newcommand{\keyformula}[1]{%
+  \vspace{2pt}%
+  \colorbox{PaleBlue}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\color{DeepBlue}\(\displaystyle #1\)}}%
   \vspace{2pt}%
 }
-\newcommand{\subsec}[1]{\textbf{#1}\par}
-\newcommand{\dx}{\,dx}
-
 
 \begin{document}
+\color{FormulaInk}
 
-\sheetsec{1. Trigonometric formulas}
+\sectionbar{1. Trigonometric and hyperbolic functions --- compare first}
 
-\subsec{Basic definitions and identities}
+\compareblock{Definitions and reciprocal structure}{
 \[
 \begin{aligned}
-\tan x &= \frac{\sin x}{\cos x}&
-\cot x &= \frac{\cos x}{\sin x}\\
-\sec x &= \frac{1}{\cos x}&
-\csc x &= \frac{1}{\sin x}
+\tan x&=\frac{\sin x}{\cos x} &
+\cot x&=\frac{\cos x}{\sin x}\\
+\sec x&=\frac1{\cos x} &
+\csc x&=\frac1{\sin x}
+\end{aligned}
+\]
+}{
+\[
+\begin{aligned}
+\sinh x&=\frac{e^x-e^{-x}}2 &
+\cosh x&=\frac{e^x+e^{-x}}2\\
+\tanh x&=\frac{\sinh x}{\cosh x} &
+\coth x&=\frac{\cosh x}{\sinh x}\\
+\sech x&=\frac1{\cosh x} &
+\csch x&=\frac1{\sinh x}
+\end{aligned}
+\]
+}
+
+\compareblock{Pythagorean-type identities}{
+\[
+\begin{aligned}
+\cos^2x\diff{+}\sin^2x&=1\\
+1\diff{+}\tan^2x&=\sec^2x\\
+\cot^2x\diff{+}1&=\csc^2x
+\end{aligned}
+\]
+}{
+\[
+\begin{aligned}
+\cosh^2x\diff{-}\sinh^2x&=1\\
+1\diff{-}\tanh^2x&=\sech^2x\\
+\coth^2x\diff{-}1&=\csch^2x
+\end{aligned}
+\]
+}
+
+\compareblock{Parity and addition formulas}{
+\small
+\[
+\begin{aligned}
+\sin(-x)&=-\sin x & \cos(-x)&=\cos x\\
+\tan(-x)&=-\tan x
 \end{aligned}
 \]
 \[
 \begin{aligned}
-\sin^2 x + \cos^2 x &= 1\\
-1 + \tan^2 x &= \sec^2 x\\
-1 + \cot^2 x &= \csc^2 x
+\sin(\alpha\!\pm\!\beta)
+ &=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta\\
+\cos(\alpha\!\pm\!\beta)
+ &=\cos\alpha\cos\beta\diff{\mp}\sin\alpha\sin\beta\\
+\tan(\alpha\!\pm\!\beta)
+ &=\frac{\tan\alpha\pm\tan\beta}
+         {1\diff{\mp}\tan\alpha\tan\beta}
+\end{aligned}
+\]
+}{
+\small
+\[
+\begin{aligned}
+\sinh(-x)&=-\sinh x & \cosh(-x)&=\cosh x\\
+\tanh(-x)&=-\tanh x
 \end{aligned}
 \]
 \[
 \begin{aligned}
-\sin\!\left(\frac{\pi}{2}-x\right) &= \cos x&
-\cos\!\left(\frac{\pi}{2}-x\right) &= \sin x\\
-\tan\!\left(\frac{\pi}{2}-x\right) &= \cot x
+\sinh(\alpha\!\pm\!\beta)
+ &=\sinh\alpha\cosh\beta\pm\cosh\alpha\sinh\beta\\
+\cosh(\alpha\!\pm\!\beta)
+ &=\cosh\alpha\cosh\beta\diff{\pm}\sinh\alpha\sinh\beta\\
+\tanh(\alpha\!\pm\!\beta)
+ &=\frac{\tanh\alpha\pm\tanh\beta}
+         {1\diff{\pm}\tanh\alpha\tanh\beta}
+\end{aligned}
+\]
+}
+
+\compareblock{Double-angle and half-angle patterns}{
+\[
+\begin{aligned}
+\sin2x&=2\sin x\cos x\\
+\cos2x&=\cos^2x\diff{-}\sin^2x\\
+       &=2\cos^2x-1=1\diff{-}2\sin^2x\\
+\tan2x&=\frac{2\tan x}{1\diff{-}\tan^2x}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sin^2\!\frac{x}{2}&=\frac{1\diff{-}\cos x}{2} &
+\cos^2\!\frac{x}{2}&=\frac{1+\cos x}{2}\\
+\tan\frac{x}{2}&=\frac{\sin x}{1+\cos x}
+ =\frac{1\diff{-}\cos x}{\sin x}
+\end{aligned}
+\]
+}{
+\[
+\begin{aligned}
+\sinh2x&=2\sinh x\cosh x\\
+\cosh2x&=\cosh^2x\diff{+}\sinh^2x\\
+        &=2\cosh^2x-1=1\diff{+}2\sinh^2x\\
+\tanh2x&=\frac{2\tanh x}{1\diff{+}\tanh^2x}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sinh^2\!\frac{x}{2}&=\frac{\cosh x\diff{-}1}{2} &
+\cosh^2\!\frac{x}{2}&=\frac{\cosh x+1}{2}\\
+\tanh\frac{x}{2}&=\frac{\sinh x}{\cosh x+1}
+ =\frac{\cosh x\diff{-}1}{\sinh x}
+\end{aligned}
+\]
+}
+
+\newpage
+\sectionbar{2. Derivatives and series --- matched row by row}
+
+\compareblock{Direct derivatives}{
+\[
+\begin{aligned}
+\ddx(\sin x)&=\cos x & \ddx(\cos x)&=\diff{-}\sin x\\
+\ddx(\tan x)&=\sec^2x & \ddx(\cot x)&=-\csc^2x\\
+\ddx(\sec x)&=\diff{+}\sec x\tan x &
+\ddx(\csc x)&=-\csc x\cot x
+\end{aligned}
+\]
+}{
+\[
+\begin{aligned}
+\ddx(\sinh x)&=\cosh x & \ddx(\cosh x)&=\diff{+}\sinh x\\
+\ddx(\tanh x)&=\sech^2x & \ddx(\coth x)&=-\csch^2x\\
+\ddx(\sech x)&=\diff{-}\sech x\tanh x &
+\ddx(\csch x)&=-\csch x\coth x
+\end{aligned}
+\]
+}
+
+\compareblock{Inverse-function derivatives}{
+\footnotesize
+\[
+\begin{aligned}
+\ddx(\arcsin x)&=\frac1{\sqrt{1\diff{-}x^2}}\\
+\ddx(\arccos x)&=\diff{-}\frac1{\sqrt{1-x^2}}\\
+\ddx(\arctan x)&=\frac1{1\diff{+}x^2}\\
+\ddx(\arccot x)&=\diff{-}\frac1{1+x^2}\\
+\ddx(\arcsec x)&=\diff{+}\frac1{|x|\sqrt{x^2-1}}\\
+\ddx(\arccsc x)&=-\frac1{|x|\sqrt{x^2\diff{-}1}}
+\end{aligned}
+\]
+\begin{center}
+\textcolor{MutedInk}{\scriptsize $|x|<1$ for $\arcsin,\arccos$; $|x|>1$ for $\arcsec,\arccsc$.}
+\end{center}
+}{
+\footnotesize
+\[
+\begin{aligned}
+\ddx(\arsinh x)&=\frac1{\sqrt{1\diff{+}x^2}}\\
+\ddx(\arcosh x)&=\diff{+}\frac1{\sqrt{x^2-1}}\\
+\ddx(\artanh x)&=\frac1{1\diff{-}x^2}\\
+\ddx(\arcoth x)&=\diff{+}\frac1{1-x^2}\\
+\ddx(\arcsech x)&=\diff{-}\frac1{x\sqrt{1\diff{-}x^2}}\\
+\ddx(\arccsch x)&=-\frac1{|x|\sqrt{1\diff{+}x^2}}
+\end{aligned}
+\]
+\begin{center}
+\textcolor{MutedInk}{\scriptsize $x>1$ for $\arcosh$; $|x|<1$ for $\artanh$; $|x|>1$ for $\arcoth$;\newline $0<x<1$ for $\arcsech$; $x\ne0$ for $\arccsch$.}
+\end{center}
+}
+
+\compareblock{Maclaurin sign patterns}{
+\[
+\begin{aligned}
+\sin x&=x\diff{-}\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\\
+\cos x&=1\diff{-}\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots
+\end{aligned}
+\]
+}{
+\[
+\begin{aligned}
+\sinh x&=x\diff{+}\frac{x^3}{3!}+\frac{x^5}{5!}+\cdots\\
+\cosh x&=1\diff{+}\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots
+\end{aligned}
+\]
+}
+
+\sectionbar{3. Antiderivatives --- the same families compared}
+\compareblock{Basic and logarithmic antiderivatives}{
+\small
+\[
+\begin{aligned}
+\int\sin x\dx&=-\cos x+C\\
+\int\cos x\dx&=\sin x+C\\
+\int\sec^2x\dx&=\tan x+C\\
+\int\csc^2x\dx&=-\cot x+C\\
+\int\sec x\tan x\dx&=\diff{+}\sec x+C\\
+\int\csc x\cot x\dx&=-\csc x+C\\
+\int\tan x\dx&=-\ln|\cos x|+C\\
+\int\cot x\dx&=\ln|\sin x|+C\\
+\int\sec x\dx&=\ln|\sec x+\tan x|+C\\
+\int\csc x\dx&=-\ln|\csc x+\cot x|+C
+\end{aligned}
+\]
+}{
+\small
+\[
+\begin{aligned}
+\int\sinh x\dx&=\cosh x+C\\
+\int\cosh x\dx&=\sinh x+C\\
+\int\sech^2x\dx&=\tanh x+C\\
+\int\csch^2x\dx&=-\coth x+C\\
+\int\sech x\tanh x\dx&=\diff{-}\sech x+C\\
+\int\csch x\coth x\dx&=-\csch x+C\\
+\int\tanh x\dx&=\ln(\cosh x)+C\\
+\int\coth x\dx&=\ln|\sinh x|+C\\
+\int\sech x\dx&=\arctan(\sinh x)+C\\
+\int\csch x\dx&=\ln\left|\tanh\frac{x}{2}\right|+C
+\end{aligned}
+\]
+}
+
+\newpage
+\sectionbar{4. Family-specific formulas}
+\noindent
+\begin{minipage}[t][0.86\textheight][t]{0.485\linewidth}
+\vspace{0pt}
+
+\subbar{Trigonometric: complementary angles and periods}
+\[
+\begin{aligned}
+\sin\!\left(\frac\pi2-x\right)&=\cos x &
+\cos\!\left(\frac\pi2-x\right)&=\sin x\\
+\tan\!\left(\frac\pi2-x\right)&=\cot x
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\sin(x+2\pi)&=\sin x & \cos(x+2\pi)&=\cos x\\
+\tan(x+\pi)&=\tan x
 \end{aligned}
 \]
 
-\subsec{Parity, periodicity, sum and difference}
+\vfill
+\subbar{Trigonometric: product-to-sum}
+\footnotesize
 \[
 \begin{aligned}
-\sin(-x) &= -\sin x&
-\cos(-x) &= \cos x&
-\tan(-x) &= -\tan x
+\sin\alpha\cos\beta
+ &=\tfrac12[\sin(\alpha+\beta)+\sin(\alpha-\beta)]\\
+\cos\alpha\sin\beta
+ &=\tfrac12[\sin(\alpha+\beta)-\sin(\alpha-\beta)]\\
+\cos\alpha\cos\beta
+ &=\tfrac12[\cos(\alpha+\beta)+\cos(\alpha-\beta)]\\
+\sin\alpha\sin\beta
+ &=-\tfrac12[\cos(\alpha+\beta)-\cos(\alpha-\beta)]
 \end{aligned}
 \]
+\normalsize
+
+\vfill
+\subbar{Trigonometric: sum-to-product}
+\footnotesize
 \[
 \begin{aligned}
-\sin(x+2\pi) &= \sin x&
-\cos(x+2\pi) &= \cos x&
-\tan(x+\pi) &= \tan x
+\sin\alpha+\sin\beta
+ &=2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}\\
+\sin\alpha-\sin\beta
+ &=2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}\\
+\cos\alpha+\cos\beta
+ &=2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}\\
+\cos\alpha-\cos\beta
+ &=-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}
 \end{aligned}
 \]
+\normalsize
+
+\end{minipage}\hfill
+\begin{minipage}[t][0.86\textheight][t]{0.485\linewidth}
+\vspace{0pt}
+
+\subbar{Trigonometric: triple-angle and half-angle substitution}
 \[
 \begin{aligned}
-\sin(\alpha\pm\beta) &= \sin\alpha\cos\beta \pm \cos\alpha\sin\beta\\
-\cos(\alpha\pm\beta) &= \cos\alpha\cos\beta \mp \sin\alpha\sin\beta\\
-\tan(\alpha\pm\beta) &= \frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}
+\sin3x&=3\sin x-4\sin^3x\\
+\cos3x&=4\cos^3x-3\cos x\\
+\sin x&=\frac{2\tan(x/2)}{1+\tan^2(x/2)}\\
+\cos x&=\frac{1-\tan^2(x/2)}{1+\tan^2(x/2)}
 \end{aligned}
 \]
 
-\subsec{Double-angle, triple-angle, half-angle}
+\vfill
+\subbar{Special angles}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.2pt}
 \[
-\begin{aligned}
-\sin 2x &= 2\sin x\cos x &
-\cos 2x &= \cos^2 x-\sin^2 x \\
-&& &= 2\cos^2 x-1 = 1-2\sin^2 x \\
-\tan 2x &= \frac{2\tan x}{1-\tan^2 x} \\
-\sin 3x &= 3\sin x - 4\sin^3 x &
-\cos 3x &= 4\cos^3 x - 3\cos x \\
-\sin^2\!\frac{x}{2} &= \frac{1-\cos x}{2} &
-\cos^2\!\frac{x}{2} &= \frac{1+\cos x}{2} \\
-\sin x &= \frac{2\tan \frac{x}{2}}{1 + \tan^2 \frac{x}{2}} &
-\cos x &= \frac{1 - \tan^2 \frac{x}{2}}{1 + \tan^2 \frac{x}{2}}\\
-\tan\frac{x}{2} &= \frac{\sin x}{1+\cos x}
-= \frac{1-\cos x}{\sin x}
-\end{aligned}
-\]
-
-\subsec{Product-to-sum and Sum-to-product}
-\[
-\begin{aligned}
-\sin\alpha\cos\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)+\sin(\alpha-\beta)\bigr] & \sin\alpha+\sin\beta &= 2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
-\cos\alpha\sin\beta &= \frac{1}{2}\bigl[\sin(\alpha+\beta)-\sin(\alpha-\beta)\bigr] & \sin\alpha-\sin\beta &= 2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} \\
-\cos\alpha\cos\beta &= \frac{1}{2}\bigl[\cos(\alpha+\beta)+\cos(\alpha-\beta)\bigr] & \cos\alpha+\cos\beta &= 2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
-\sin\alpha\sin\beta &= - \frac{1}{2}\bigl[\cos(\alpha+\beta) - \cos(\alpha-\beta)\bigr] & \cos\alpha-\cos\beta &= -2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}
-\end{aligned}
-\]
-
-
-\subsec{Special-angle table}
-\[
-\begin{array}{>{\displaystyle}c|>{\displaystyle}c>{\displaystyle}c>{\displaystyle}c>{\displaystyle}c>{\displaystyle}c}
-\text{Angle} & 18^\circ & \dfrac{\pi}{6} & \dfrac{\pi}{4} & \dfrac{\pi}{3} & \dfrac{\pi}{2} \\ \hline
-\sin\theta & \dfrac{\sqrt5-1}{4} & \dfrac12 & \dfrac{\sqrt2}{2} & \dfrac{\sqrt3}{2} & 1 \\
-\cos\theta & \dfrac{\sqrt{10+2\sqrt5}}{4} & \dfrac{\sqrt3}{2} & \dfrac{\sqrt2}{2} & \dfrac12 & 0 \\
-\tan\theta & \dfrac{1}{\sqrt{5+2\sqrt5}} & \dfrac{\sqrt3}{3} & 1 & \sqrt3 & \text{undef} \\
-\cot\theta & \sqrt{5+2\sqrt5} & \sqrt3 & 1 & \dfrac{\sqrt3}{3} & 0 \\
-\sec\theta & \dfrac{4}{\sqrt{10+2\sqrt5}} & \dfrac{2\sqrt3}{3} & \sqrt2 & 2 & \text{undef} \\
-\csc\theta & \sqrt5+1 & 2 & \sqrt2 & \dfrac{2\sqrt3}{3} & 1
+\begin{array}{@{}c|ccccc@{}}
+\theta & 18^\circ & \frac\pi6 & \frac\pi4 & \frac\pi3 & \frac\pi2\\ \hline
+\sin\theta & \frac{\sqrt5-1}{4} & \frac12 & \frac{\sqrt2}{2} & \frac{\sqrt3}{2} & 1\\
+\cos\theta & \frac{\sqrt{10+2\sqrt5}}{4} & \frac{\sqrt3}{2} & \frac{\sqrt2}{2} & \frac12 & 0\\
+\tan\theta & \frac1{\sqrt{5+2\sqrt5}} & \frac{\sqrt3}{3} & 1 & \sqrt3 & \notdefined\\
+\cot\theta & \sqrt{5+2\sqrt5} & \sqrt3 & 1 & \frac{\sqrt3}{3} & 0\\
+\sec\theta & \frac4{\sqrt{10+2\sqrt5}} & \frac{2\sqrt3}{3} & \sqrt2 & 2 & \notdefined\\
+\csc\theta & \sqrt5+1 & 2 & \sqrt2 & \frac{2\sqrt3}{3} & 1
 \end{array}
 \]
+\normalsize
+\raggedright
 
-\sheetsec{2. Hyperbolic functions}
-
-\subsec{Definitions and identities}
+\vfill
+\subbar{Inverse hyperbolic logarithmic forms}
+\small
 \[
 \begin{aligned}
-\sinh x &= \frac{e^x-e^{-x}}{2} &
-\cosh x &= \frac{e^x+e^{-x}}{2} \\
-\tanh x &= \frac{\sinh x}{\cosh x} &
-\coth x &= \frac{\cosh x}{\sinh x} \\
-\sech x &= \frac{1}{\cosh x} &
-\csch x &= \frac{1}{\sinh x} \\
-\cosh^2 x-\sinh^2 x &= 1 \\
-1-\tanh^2 x &= \sech^2 x \\
-\coth^2 x-1 &= \csch^2 x \\
-\operatorname{arsinh}x &= \ln\left(x + \sqrt{1 + x^2}\right)\\
-\operatorname{arcosh}x &= \ln\left(x \pm \sqrt{x^2 -1}\right)
+\arsinh x&=\ln\!\left(x+\sqrt{1+x^2}\right)\\
+\arcosh x&=\ln\!\left(x+\sqrt{x^2-1}\right)\where{x\ge1}\\
+\artanh x&=\frac12\ln\!\left(\frac{1+x}{1-x}\right)\where{|x|<1}\\
+\arcsech x&=\ln\!\left(\frac{1+\sqrt{1-x^2}}{x}\right)\where{0<x\le1}\\
+\arccsch x&=\ln\!\left(\frac1x+\sqrt{1+\frac1{x^2}}\right)\where{x\ne0}
+\end{aligned}
+\]
+\normalsize
+
+\end{minipage}
+
+\newpage
+\sectionbar{5. General differentiation, integration, and Taylor formulas}
+\begin{multicols*}{2}
+\raggedcolumns
+
+\subbar{Differentiation: core rules}
+\[
+\begin{aligned}
+\ddx(c)&=0 & \ddx(x)&=1\\
+\ddx[cf(x)]&=cf'(x)\\
+\ddx[f(x)\!\pm\!g(x)]&=f'(x)\!\pm\!g'(x)\\
+\ddx[f(x)g(x)]&=f'(x)g(x)+f(x)g'(x)\\
+\ddx\!\left[\frac{f(x)}{g(x)}\right]
+ &=\frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)}\\
+\ddx f(g(x))&=f'(g(x))g'(x)
 \end{aligned}
 \]
 
+\subbar{Derivative of an inverse function}
+\[
+f(f^{-1}(x))=x
+\Longrightarrow
+f'(f^{-1}(x))(f^{-1})'(x)=1
+\]
+\keyformula{(f^{-1})'(x)=\frac{1}{f'(f^{-1}(x))}}
+\[
+\frac{dy}{dx}=\frac{1}{dx/dy}
+\quad\textcolor{MutedInk}{\scriptstyle y=f^{-1}(x)}
+\]
+
+\subbar{Powers, exponentials, logarithms}
 \[
 \begin{aligned}
-\sinh(-x) &= -\sinh x&
-\cosh(-x) &= \cosh x&
-\tanh(-x) &= -\tanh x
+\ddx(x^n)&=nx^{n-1} &
+\ddx\!\left(\frac1x\right)&=-\frac1{x^2}\\
+\ddx\sqrt{x}&=\frac1{2\sqrt{x}} &
+\ddx(e^x)&=e^x\\
+\ddx(a^x)&=a^x\ln a &
+\ddx\ln|x|&=\frac1x\\
+\ddx\log_a|x|&=\frac1{x\ln a}
 \end{aligned}
 \]
 
-\subsec{Addition, double-angle, half-angle}
+\subbar{Taylor's theorem}
+\small
 \[
 \begin{aligned}
-\sinh(\alpha\pm\beta) &= \sinh\alpha\cosh\beta \pm \cosh\alpha\sinh\beta\\
-\cosh(\alpha\pm\beta) &= \cosh\alpha\cosh\beta \pm \sinh\alpha\sinh\beta\\
-\tanh(\alpha\pm\beta) &= \frac{\tanh\alpha\pm\tanh\beta}{1\pm\tanh\alpha\tanh\beta}
+f(x)&=\sum_{i=0}^{n}\frac{f^{(i)}(a)}{i!}(x-a)^i\\
+&\quad+\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1},
+\end{aligned}
+\]
+\begin{center}
+\textcolor{MutedInk}{\scriptsize where $\xi$ lies between $x$ and $a$.}
+\end{center}
+\normalsize
+
+\subbar{Integration: core rules}
+\[
+\begin{aligned}
+\int[cf(x)\!\pm\!g(x)]\dx
+ &=c\int f(x)\dx\pm\int g(x)\dx\\
+\int f(x)g'(x)\dx
+ &=f(x)g(x)-\int f'(x)g(x)\dx
+\end{aligned}
+\]
+\begin{center}
+\textcolor{MutedInk}{\scriptsize The second line is integration by parts.}
+\end{center}
+
+\subbar{Powers, exponentials, logarithms}
+\[
+\begin{aligned}
+\int x^n\dx&=\frac{x^{n+1}}{n+1}+C\where{n\ne-1}\\
+\int\frac1x\dx&=\ln|x|+C\\
+\int e^x\dx&=e^x+C\\
+\int a^x\dx&=\frac{a^x}{\ln a}+C\\
+\int\ln|x|\dx&=x\ln|x|-x+C
+\end{aligned}
+\]
+
+\subbar{Standard inverse-trig and logarithmic forms}
+\small
+\[
+\begin{aligned}
+\int\frac{1}{x^2+a^2}\dx
+ &=\frac1a\arctan\frac xa+C\\
+\int\frac{1}{a^2-x^2}\dx
+ &=\frac1{2a}\ln\left|\frac{a+x}{a-x}\right|+C\\
+\int\frac{1}{x^2-a^2}\dx
+ &=\frac1{2a}\ln\left|\frac{x-a}{x+a}\right|+C\\
+\int\frac{1}{\sqrt{a^2-x^2}}\dx
+ &=\arcsin\frac xa+C\\
+\int\frac{1}{\sqrt{x^2+a^2}}\dx
+ &=\ln\left|x+\sqrt{x^2+a^2}\right|+C\\
+\int\frac{1}{\sqrt{x^2-a^2}}\dx
+ &=\ln\left|x+\sqrt{x^2-a^2}\right|+C
+\end{aligned}
+\]
+\begin{center}\textcolor{MutedInk}{\scriptsize $a>0$}\end{center}
+\normalsize
+
+\subbar{Other common Maclaurin series}
+\small
+\[
+\begin{aligned}
+e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
+\frac1{1-x}&=1+x+x^2+x^3+\cdots\\
+\frac1{1+x}&=1-x+x^2-x^3+\cdots\\
+\ln(1+x)&=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots\\
+\arctan x&=x-\frac{x^3}{3}+\frac{x^5}{5}-\cdots\\
+\artanh x&=x+\frac{x^3}{3}+\frac{x^5}{5}+\cdots
 \end{aligned}
 \]
 \[
 \begin{aligned}
-\sinh 2x &= 2\sinh x\cosh x\\
-\cosh 2x &= \cosh^2 x+\sinh^2 x = 2\cosh^2 x-1 = 1+2\sinh^2 x\\
-\tanh 2x &= \frac{2\tanh x}{1+\tanh^2 x}
-\end{aligned}
-\]
-\[
-\begin{aligned}
-\sinh^2\!\frac{x}{2} &= \frac{\cosh x-1}{2}&
-\cosh^2\!\frac{x}{2} &= \frac{\cosh x+1}{2}\\
-\tanh\frac{x}{2} &= \frac{\sinh x}{\cosh x+1}
-= \frac{\cosh x-1}{\sinh x}
-\end{aligned}
-\]
-
-\sheetsec{3. Common differentiation formulas}
-
-\subsec{For \(u=ax+b\)}
-\[
-\begin{aligned}
-\frac{d}{dx}(x^n) &= n\,x^{\,n-1}\\
-\frac{d}{dx}\!\left(\frac{1}{x}\right) &= -\frac{1}{x^2} &
-\frac{d}{dx}\sqrt{x} &= \frac{1}{2\sqrt{x}} \\
-\frac{d}{dx}(e^x) &= e^x &
-\frac{d}{dx}(a^x) &= a^x\ln a \\
-\frac{d}{dx}\ln|x| &= \frac{1}{x} &
-\frac{d}{dx}\log_a|x| &= \frac{1}{x \ln a}
-\end{aligned}
-\]
-
-\subsec{Trigonometric}
-\[
-\begin{aligned}
-\frac{d}{dx}(\sin x) &= \cos x &
-\frac{d}{dx}(\cos x) &= -\sin x \\
-\frac{d}{dx}(\tan x) &= \sec^2 x &
-\frac{d}{dx}(\cot x) &= -\csc^2 x \\
-\frac{d}{dx}(\sec x) &= \sec x\tan x &
-\frac{d}{dx}(\csc x) &= -\csc x\cot x
-\end{aligned}
-\]
-
-\subsec{Inverse trigonometric}
-\[
-\begin{aligned}
-\frac{d}{dx}\arcsin x &= \frac{1}{\sqrt{1-x^2}} &
-\frac{d}{dx}\arccos x &= -\frac{1}{\sqrt{1-x^2}} \\
-\frac{d}{dx}\arctan x &= \frac{1}{1+x^2} &
-\frac{d}{dx}\arccot x &= -\frac{1}{1+x^2}
-\end{aligned}
-\]
-
-\sheetsec{4. Common integration formulas}
-
-\subsec{For \(u=ax+b\)}
-\[
-\begin{aligned}
-\int x^n \dx &= \frac{x^{n+1}}{n+1} + C
-\qquad (n\neq -1) \\
-\int \frac{1}{x}\,\dx &= \ln|x| + C \\
-\int e^x \dx &= e^x + C \\
-\int a^x \dx &= \frac{a^x}{\ln a} + C \\
-\int \ln|x| \dx &= \bigl(x\ln|x|-x\bigr) + C
-\end{aligned}
-\]
-
-\subsec{Trigonometric}
-\[
-\begin{aligned}
-\int \sin x \dx &= -\cos x + C &
-\int \cos x \dx &= \sin x + C \\
-\int \sec^2 x \dx &= \tan x + C &
-\int \csc^2 x \dx &= -\cot x + C \\
-\int \sec x\tan x \dx &= \sec x + C &
-\int \csc x\cot x \dx &= -\csc x + C
-\end{aligned}
-\]
-\[
-\begin{aligned}
-\int \tan x \dx &= -\ln|\cos x| + C\\
-\int \cot x \dx &= \ln|\sin x| + C \\
-\int \sec x \dx &= \ln|\sec x+\tan x| + C \\
-\int \csc x \dx &= -\ln|\csc x+\cot x| + C
-\end{aligned}
-\]
-
-\subsec{Standard inverse-trig and logarithmic forms}
-
-\[
-\begin{aligned}
-\int \frac{1}{x^2+a^2}\,\dx &= \frac{1}{a}\arctan\frac{x}{a} + C\\
-\int \frac{1}{a^2-x^2}\,\dx &= \frac{1}{2a}\ln\left|\frac{a+x}{a-x}\right| + C\\
-\int \frac{1}{x^2-a^2}\,\dx &= \frac{1}{2a}\ln\left|\frac{x-a}{x+a}\right| + C \\
-\int \frac{1}{\sqrt{a^2-x^2}}\,\dx &= \arcsin\frac{x}{a} + C\\
-\int \frac{1}{\sqrt{x^2+a^2}}\,\dx &= \ln\bigl|x+\sqrt{x^2+a^2}\bigr| + C\\
-\int \frac{1}{\sqrt{x^2-a^2}}\,\dx &= \ln\bigl|x+\sqrt{x^2-a^2}\bigr| + C\\
-\end{aligned}
-\]
-
-\sheetsec{5. Taylor expansions}
-
-\subsec{General forms}
-\[
-f(x) = \sum_{i=0}^{n}\frac{f^{(i)}(a)}{i!}(x-a)^i + \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1} \qquad(\xi \text{ is between } x \text { and } a)
-\]
-
-\subsec{Common Maclaurin series}
-\[
-\begin{aligned}
-e^x &= 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
-\sin x &= x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\\
-\cos x &= 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\\
-\sinh x &= x+\frac{x^3}{3!}+\frac{x^5}{5!}+\cdots\\
-\cosh x &= 1+\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\\
-\frac{1}{1-x} &= 1+x+x^2+x^3+\cdots \qquad (|x|<1)\\
-\frac{1}{1+x} &= 1-x+x^2-x^3+\cdots \qquad (|x|<1)\\
-\ln(1+x) &= x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots \qquad (-1<x\le 1)\\
-\arctan x &= x-\frac{x^3}{3}+\frac{x^5}{5}-\cdots \qquad (|x| < 1)\\
-\operatorname{arctanh} x &= x+\frac{x^3}{3}+\frac{x^5}{5}+\cdots \qquad (|x| < 1)\\
 (1+x)^\alpha
-&= 1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2
-+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3+\cdots
-\qquad (|x|<1)
+ &=1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2\\
+ &\quad+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3+\cdots
 \end{aligned}
 \]
+\begin{center}
+\textcolor{MutedInk}{\scriptsize $|x|<1$ for the geometric, logarithmic, inverse-tangent, inverse-hyperbolic-tangent, and binomial series.}
+\end{center}
+\normalsize
+
+\end{multicols*}
 
 \end{document}
